@@ -5,8 +5,9 @@ window.addEventListener('load', () => {
         if (validatePrompt(stringWithPairs)) {
             const resultWithEmptySpaces = convertStringToArray(stringWithPairs);
             const resultWithoutEmptySpaces = removeEmptySpaces(resultWithEmptySpaces);
-            const countPairsInArray = countPairs(resultWithoutEmptySpaces);
-            showResults(stringWithPairs, getPairs(resultWithoutEmptySpaces), countPairsInArray);
+            const getPairsFromString = getPairs(resultWithoutEmptySpaces);
+            const countPairsInArray = countPairs(getPairsFromString);
+            showResults(stringWithPairs, getPairsFromString, countPairsInArray);
         }
         else
             alert('Digite algo válido');
@@ -16,21 +17,17 @@ window.addEventListener('load', () => {
         const convertedStringToArray = string.split('');
         return convertedStringToArray;
     };
-    const removeEmptySpaces = (stringArrayWithSpaces) => {
-        return stringArrayWithSpaces
-            .map(caractere => caractere.trim())
-            .filter(caractere => caractere != '');
-    };
     const getPairs = (stringArray) => {
         const pairs = ['a', 'e', 'i', 'o', 'u'];
         const stringPairs = stringArray.filter(caractere => pairs.includes(caractere.toLowerCase()));
         return stringPairs;
     };
-    const countPairs = (stringArray) => {
-        const pairs = ['a', 'e', 'i', 'o', 'u'];
-        const stringPairs = stringArray.filter(caractere => pairs.includes(caractere.toLowerCase()));
-        return stringPairs.length;
+    const removeEmptySpaces = (stringArrayWithSpaces) => {
+        return stringArrayWithSpaces
+            .map(caractere => caractere.trim())
+            .filter(caractere => caractere != '');
     };
+    const countPairs = (stringArray) => stringArray.length;
     const validatePrompt = (possibleNullableValue) => {
         const isValid = possibleNullableValue != null ?
             true : false;

@@ -5,30 +5,41 @@ window.addEventListener('load', () => {
         const stringWithPairs: string | null = prompt('Digite sua palavra');
 
         if(validatePrompt(stringWithPairs)) {
-
-            
+ 
             const resultWithEmptySpaces: string[] = convertStringToArray(stringWithPairs!);
             const resultWithoutEmptySpaces: string[] = removeEmptySpaces(resultWithEmptySpaces);
-            const countPairsInArray: number = countPairs(resultWithoutEmptySpaces)
+            const getPairsFromString: string[] = getPairs(resultWithoutEmptySpaces);
+            const countPairsInArray: number = countPairs(getPairsFromString);
 
             showResults(
                 stringWithPairs!, 
-                getPairs(resultWithoutEmptySpaces), 
+                getPairsFromString, 
                 countPairsInArray
             );
         } 
         else 
             alert('Digite algo válido');
         ;
-
     }
 
     const convertStringToArray = (
         string: string
     ): string[] => {
 
-        const convertedStringToArray: string[]  = string.split('');
+        const convertedStringToArray: string[] = string.split('');
         return convertedStringToArray
+    }
+
+    const getPairs = (stringArray: string[]): string[] => {
+
+        const pairs = ['a', 'e', 'i', 'o', 'u'];
+
+
+        const stringPairs = stringArray.filter(
+            caractere => pairs.includes(caractere.toLowerCase())
+        );
+
+        return stringPairs;
     }
 
     const removeEmptySpaces = (
@@ -41,25 +52,7 @@ window.addEventListener('load', () => {
         ;
     }
 
-    const getPairs = (stringArray: string[]): string[] => {
-
-        const pairs = ['a', 'e', 'i', 'o', 'u'];
-        const stringPairs = stringArray.filter(
-            caractere => pairs.includes(caractere.toLowerCase())
-        );
-
-        return stringPairs;
-    }
-
-    const countPairs = (stringArray: string[]): number => {
-
-        const pairs = ['a', 'e', 'i', 'o', 'u'];
-        const stringPairs = stringArray.filter(
-            caractere => pairs.includes(caractere.toLowerCase())
-        );
-
-        return stringPairs.length;
-    }
+    const countPairs = (stringArray: string[]): number => stringArray.length;
 
     const validatePrompt = (
         possibleNullableValue: string | null

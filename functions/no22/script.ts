@@ -33,11 +33,10 @@ window.addEventListener('load', (): void => {
         return arrayNumbersReturn;
     }
 
-    const sumNumbersInArray = (arrayNumbers: number[]): number => {
-        const sumOfValuesInArray = arrayNumbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        return sumOfValuesInArray;
-    }
-
+    const sumNumbersInArray = (arrayNumbers: number[]): number => 
+        arrayNumbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+    ;
+        
     const showResult = (
         arrayOfNumbersFormated: string, 
         sumOfValuesInArray: number

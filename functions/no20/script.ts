@@ -1,4 +1,4 @@
-window.addEventListener('load', () => {
+window.addEventListener('load', (): void => {
 
     const main = () => {
         const string = prompt('Digite uma palavra');

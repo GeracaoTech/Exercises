@@ -1,19 +1,26 @@
-window.addEventListener('load', () => {
+window.addEventListener('load', (): void => {
+
+    const button: HTMLBodyElement | null = document.querySelector("[rel='js-btn']");
+
+    button?.addEventListener('click', (): void => {
+      main();  
+    })
 
     const calcFibonnaci = (informedNumber: number): number[] => {
 
         let firstNumberFibonnaci: number = 0;
         let secondNumberFibonnaci: number = 1;
-        let temp;
-        const resultArray = [];
+        let temporary;
 
-        for(let i = 0 ; i <= informedNumber ; i++){
+        const resultArray: number[] = [];
+
+        for(let i = 0 ; i <= informedNumber ; i++) {
 
             resultArray.push(firstNumberFibonnaci);
             
-            temp = firstNumberFibonnaci;
+            temporary = firstNumberFibonnaci;
             firstNumberFibonnaci = secondNumberFibonnaci;
-            secondNumberFibonnaci = temp + secondNumberFibonnaci;
+            secondNumberFibonnaci = temporary + secondNumberFibonnaci;
         }
 
         return resultArray;
@@ -27,6 +34,9 @@ window.addEventListener('load', () => {
     
         console.log(result);
     }
+});
 
-    main();
-})
+
+// window.addEventListener('load', function(event) {
+//     console.log(event);
+// });

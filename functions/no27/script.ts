@@ -17,9 +17,9 @@ window.addEventListener('load', (): void => {
 
         for(let i = 2 ; i <= limit ; i++) {
 
-            if(isPrimo(i)) {
+            if(isPrimo(i)) 
                 primosArray.push(i);
-            }
+            ;
         }
 
         return primosArray;
@@ -29,9 +29,10 @@ window.addEventListener('load', (): void => {
 
         let count = 0;
 
-        for(let i = 1 ; i <= number ; i++) {
+        for(let i = 1 ; i <= number ; i++) 
             if(number % i == 0) count++
-        }
+        ;
+        
 
         return count <= 2 ? true : false
     }
